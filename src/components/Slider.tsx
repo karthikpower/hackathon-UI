@@ -24,7 +24,7 @@ const Slider: React.FC<SliderProps> = ({ min, max, options }) => {
         <div>
             <label>Min grade: </label>
             <select
-                value={options}
+                value={minGrade}
                 onChange={(e) => handleSelectMinGrade(e.target.value)}
             >
                 {options.map((option: any, index: number) => (
@@ -36,7 +36,7 @@ const Slider: React.FC<SliderProps> = ({ min, max, options }) => {
             &nbsp; &nbsp;
             <label>Max grade: </label>
             <select
-                value={options}
+                value={maxGrade}
                 onChange={(e) => handleSelectMaxGrade(e.target.value)}
             >
                 {options.map((option: any, index: number) => (
