@@ -1,15 +1,19 @@
 import React from 'react';
+import { planOptions } from '../../api/MockData/plan';
+import _ from 'lodash';
 
+const coursesByGrade = _.groupBy(_.flatMap(planOptions, 'courses'), 'grade');
+const grades = _.uniq(_.flatMap(planOptions, 'courses').map(course => course.grade));
+
+const handleCourseClick = (name: any) => {
+    console.log(name)
+}
 const DisplayPlan: React.FC = () => {
-    const requirements = ['Requirement 1', 'Requirement 2', 'Requirement 3', 'Requirement 4'];
-    const grades = [5, 6, 7, 8, 9, 10];
-
     return (
         <div>
             <table style={{ borderCollapse: 'collapse', width: '100%' }}>
                 <thead>
                     <tr>
-                        <th></th> {/* Empty cell for the top-left corner */}
                         {grades.map((grade) => (
                             <th key={grade} style={headerCellStyle}>
                                 Grade {grade}
@@ -18,12 +22,23 @@ const DisplayPlan: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {requirements.map((requirement, rowIndex) => (
-                        <tr key={requirement}>
-                            <td style={headerCellStyle}>{requirement}</td>
+                    {planOptions.map((plan, rowIndex) => (
+                        <tr key={plan.guid}>
                             {grades.map((grade) => (
-                                <td key={`${requirement}-${grade}`} style={cellStyle}>
-                                    {/* Add your content for each cell here */}
+                                <td key={ grade } style={cellStyle}>
+                                    {coursesByGrade[grade]
+                                        ? coursesByGrade[grade]
+                                            .filter(course => plan.courses.some(planCourse => planCourse.id === course.id))
+                                            .map(course => (
+                                                <span
+                                                    key={course.id}
+                                                    onClick={() => handleCourseClick(course.name)}
+                                                    style={{ cursor: 'pointer' }}
+                                                >
+                                                    {course.name}
+                                                </span>
+                                            ))
+                                        : ''}
                                 </td>
                             ))}
                         </tr>
