@@ -1,0 +1,3 @@
+6th Dec
+1/ Table should display course only for that selected card
+2/ Try to use react context
