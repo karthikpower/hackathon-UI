@@ -3,15 +3,16 @@ import { planOptions } from '../../api/MockData/plan';
 import _ from 'lodash';
 import MyContext from '../../components/MyContext';
 
-const coursesByGrade = _.groupBy(_.flatMap(planOptions, 'courses'), 'grade');
-const grades = _.uniq(_.flatMap(planOptions, 'courses').map(course => course.grade));
 
+const grades = _.uniq(_.flatMap(planOptions, 'courses').map(course => course.grade));
 const handleCourseClick = (name: any) => {
     console.log(name)
 }
 const DisplayPlan: React.FC = () => {
     const planGuid = useContext(MyContext);
-    console.log('line14 test', planGuid)
+    const plan = planOptions.find(plan => plan.guid === planGuid);
+    const courses = plan?.courses;
+    const coursesByGrade = _.groupBy(plan?.courses, 'grade');
     return (
         <div>
             <table style={{ borderCollapse: 'collapse', width: '100%' }}>
@@ -25,27 +26,28 @@ const DisplayPlan: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {planOptions.map((plan, rowIndex) => (
-                        <tr key={plan.guid}>
+                    
+                        <tr>
                             {grades.map((grade) => (
                                 <td key={ grade } style={cellStyle}>
                                     {coursesByGrade[grade]
                                         ? coursesByGrade[grade]
-                                            .filter(course => plan.courses.some(planCourse => planCourse.id === course.id))
-                                            .map(course => (
+                                            .filter(course => courses!.some(planCourse => planCourse.id === course.id))
+                                            .map((course, index, array) => (
                                                 <span
                                                     key={course.id}
                                                     onClick={() => handleCourseClick(course.name)}
                                                     style={{ cursor: 'pointer' }}
                                                 >
                                                     {course.name}
+                                                    {index !== array.length - 1 && ','}
                                                 </span>
                                             ))
                                         : ''}
                                 </td>
                             ))}
                         </tr>
-                    ))}
+                
                 </tbody>
             </table>
         </div>

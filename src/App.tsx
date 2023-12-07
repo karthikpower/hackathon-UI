@@ -14,13 +14,15 @@ function App() {
   const updatePlanGuid = (planGuid: any) => {
     setPlanGuid(planGuid)
   }
+  
   return (
+    
     <MyContext.Provider value={planGuid}>
       <Container fluid>
         <Row>
-          <Col xs={12} md={12} lg={4}><PlanGenAI getPlanId={updatePlanGuid} /></Col>
-          <Col md={12} lg={4}><DisplayPlan /></Col>
-          <Col md={12} lg={4}>1 of 1</Col>
+          <Col xs={12} md={12} lg={6} xl={4}><PlanGenAI getPlanId={updatePlanGuid} /></Col>
+          <Col xs={12} md={12} lg={6} xl={4}><DisplayPlan /></Col>
+          <Col xs={12} md={12} lg={6} xl={4}>1 of 1</Col>
         </Row>
       </Container>
     </MyContext.Provider>
