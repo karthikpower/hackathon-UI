@@ -1,3 +1,5 @@
 6th Dec
 1/ Table should display course only for that selected card
 2/ Try to use react context
+
+3/ Chnage the container layout have container inside planAI and bring the filter and display course details as child, so context can be shared.

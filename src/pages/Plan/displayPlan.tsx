@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { planOptions } from '../../api/MockData/plan';
 import _ from 'lodash';
+import MyContext from '../../components/MyContext';
 
 const coursesByGrade = _.groupBy(_.flatMap(planOptions, 'courses'), 'grade');
 const grades = _.uniq(_.flatMap(planOptions, 'courses').map(course => course.grade));
@@ -9,6 +10,8 @@ const handleCourseClick = (name: any) => {
     console.log(name)
 }
 const DisplayPlan: React.FC = () => {
+    const planGuid = useContext(MyContext);
+    console.log('line14 test', planGuid)
     return (
         <div>
             <table style={{ borderCollapse: 'collapse', width: '100%' }}>
