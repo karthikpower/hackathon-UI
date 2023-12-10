@@ -9,10 +9,8 @@ const Slider: React.FC<SliderProps> = ({options }) => {
     const handleSelectMinGrade = (option: any) => {
         option = parseInt(option)
         if (option >= maxGrade) {
-            console.log('line12', option, maxGrade)
             setError(`Please select min grade is less than max grade. You have selected min grade: ${option} and max grade: ${maxGrade}`);
         } else {
-            console.log('line15',option, maxGrade)
             setMinGrade(option);
             setError('');
         }
@@ -22,10 +20,8 @@ const Slider: React.FC<SliderProps> = ({options }) => {
     const handleSelectMaxGrade = (option: any) => {
         option = parseInt(option)
         if (minGrade >= option) {
-            console.log('line23', minGrade, option)
             setError(`Please select min grade is less than max grade. You have selected max grade: ${option} and min grade: ${minGrade}`);
         } else {
-            console.log('line26', minGrade, option)
             setMaxGrade(option);
             setError('');
         }

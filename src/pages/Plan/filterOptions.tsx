@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { planOptions } from '../../api/MockData/plan';
-import _, { toInteger } from 'lodash';
-import CourseContext from '../../components/CourseContext';
+import _ from 'lodash';
 import PlanContext from '../../components/PlanContext';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Slider from '../../components/Slider';
+import Button from 'react-bootstrap/Button';
 
 let grades = _.uniq(_.flatMap(planOptions, 'courses').map(course => course.grade));
 grades = [...grades].sort((a, b) => a - b);
@@ -40,7 +40,8 @@ const FilterOptions: React.FC<FilterOptionsProps> = ({ getCourseId }) => {
                 <Row>
                     <Col xs={12}><DisplayPlan getCourseId={getCourseId} courses={courses} coursesByGrade={coursesByGrade} /></Col>
                     <Col xs={12}><ContextTable getCourseId={getCourseId} courses={courses} coursesByStatus={coursesByStatus} /></Col>
-                    <Col xs={12}><Slider options={[6,7,8,9,10,11,12]} /></Col>
+                    <Col xs={12}><Slider options={[6, 7, 8, 9, 10, 11, 12]} /></Col>
+                    <Col xs={12}><Button variant="success">Apply Filters & Create Plan</Button></Col>
                 </Row>
             </Container>
         ): <></>

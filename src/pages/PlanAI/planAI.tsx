@@ -9,9 +9,7 @@ interface PlanAIProps {
 }
 
 const handlePlanCreation = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.stopPropagation();
-    console.log('call plan creation api');
-   
+    event.stopPropagation(); 
 }
 export const PlanGenAI: React.FC<PlanAIProps> = ({getPlanId }) => { 
     return (
