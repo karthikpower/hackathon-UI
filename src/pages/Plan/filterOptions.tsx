@@ -33,15 +33,14 @@ const FilterOptions: React.FC<FilterOptionsProps> = ({ getCourseId }) => {
     const courses = plan?.courses;
     const coursesByGrade = _.groupBy(plan?.courses, 'grade');
     const coursesByStatus = _.groupBy(plan?.courses, 'status');
-
-   
+    
     return (planGuid ?
        ( 
             <Container fluid>
                 <Row>
                     <Col xs={12}><DisplayPlan getCourseId={getCourseId} courses={courses} coursesByGrade={coursesByGrade} /></Col>
                     <Col xs={12}><ContextTable getCourseId={getCourseId} courses={courses} coursesByStatus={coursesByStatus} /></Col>
-                    <Col xs={12}><Slider options={grades} /></Col>
+                    <Col xs={12}><Slider options={[6,7,8,9,10,11,12]} /></Col>
                 </Row>
             </Container>
         ): <></>
