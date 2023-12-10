@@ -8,17 +8,20 @@ export const planOptions = [
             {
                 "name": "English",
                 "id": 'L1',
-                "grade": 6
+                "grade": 6,
+                "status": "Completed"
             },
             {
                 "name": "French",
                 "id": 'L2',
-                "grade": 7
+                "grade": 7,
+                "status": "In Progress"
             },
             {
                 "name": "Spanish",
                 "id": 'L3',
-                "grade": 7
+                "grade": 7,
+                "status": "Failed"
             }
         ]
     },
@@ -32,12 +35,14 @@ export const planOptions = [
             {
                 "name": "Algebra",
                 "id": 'M1',
-                "grade": 6
+                "grade": 10,
+                "status": "Completed"
             },
             {
                 "name": "Arithmetic",
                 "id": 'M2',
-                "grade": 7
+                "grade": 12,
+                "status": "Completed"
             }
         ]
     },
@@ -51,11 +56,13 @@ export const planOptions = [
             {
                 "name": "Biology",
                 "id": 'S1',
-                "grade": 8
+                "grade": 8,
+                "status": "Failed"
             },
             {
                 "name": "Physics",
-                "grade": 9
+                "grade": 9,
+                "status": "Completed"
             }
         ]
     }

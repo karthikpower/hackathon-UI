@@ -3,3 +3,8 @@
 2/ Try to use react context
 
 3/ Chnage the container layout have container inside planAI and bring the filter and display course details as child, so context can be shared.
+
+7th Dec
+1/ Mock the context data with course completed, in progress and failed and it in table fitment
+2/ show the slider , course selection by grade
+3/ Show the viw with course details

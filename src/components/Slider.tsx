@@ -1,24 +1,33 @@
 // RadioButton.tsx
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 
 interface SliderProps {
-    min: number;
-    max: number;
     options: string[];
 }
 
-const Slider: React.FC<SliderProps> = ({ min, max, options }) => {
+const Slider: React.FC<SliderProps> = ({options }) => {
     const handleSelectMinGrade = (option: any) => {
-        setMinGrade(option);
+        if ((option < maxGrade) || (option === maxGrade)) {
+            setError(`Please select min grade is less than max grade. You have selected min grade: ${option} and max grade: ${maxGrade}`);
+        } else {
+            setMinGrade(option);
+            setError('');
+        }
     };
 
 
     const handleSelectMaxGrade = (option: any) => {
-        setMaxGrade(option);
+        if ((minGrade > option) || (minGrade === option)) {
+            setError(`Please select min grade is less than max grade. You have selected max grade: ${option} and min grade: ${minGrade}`);
+        } else {
+            setMaxGrade(option);
+            setError('');
+        }
     };
 
     const [minGrade, setMinGrade] = useState(options[0]);
-    const [maxGrade, setMaxGrade] = useState(options[options.length-1]);
+    const [maxGrade, setMaxGrade] = useState(options[options.length - 1]);
+    const [error, setError] = useState('');
 
     return (
         <div>
@@ -45,6 +54,7 @@ const Slider: React.FC<SliderProps> = ({ min, max, options }) => {
                     </option>
                 ))}
             </select>
+            {{ error } ? <p style={{ color: 'red' }}>{error}</p> : ''}
         </div>
     );
 };
