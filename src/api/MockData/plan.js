@@ -9,19 +9,21 @@ export const planOptions = [
                 "name": "English",
                 "id": 'L1',
                 "grade": 6,
-                "status": "Completed"
+                "status": "Completed",
+                "favourite": true
             },
             {
                 "name": "French",
                 "id": 'L2',
                 "grade": 7,
-                "status": "In Progress"
+                "status": "Completed"
             },
             {
                 "name": "Spanish",
                 "id": 'L3',
                 "grade": 7,
-                "status": "Failed"
+                "status": "Yet to Complete",
+                "favourite": true
             }
         ]
     },
@@ -57,7 +59,7 @@ export const planOptions = [
                 "name": "Biology",
                 "id": 'S1',
                 "grade": 8,
-                "status": "Failed"
+                "status": "Yet to Complete"
             },
             {
                 "name": "Physics",

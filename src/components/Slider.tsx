@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 
 interface SliderProps {
     options: number[];
+    title: string;
 }
 
-const Slider: React.FC<SliderProps> = ({options }) => {
+const Slider: React.FC<SliderProps> = ({title, options }) => {
     const handleSelectMinGrade = (option: any) => {
         option = parseInt(option)
         if (option >= maxGrade) {
@@ -33,6 +34,7 @@ const Slider: React.FC<SliderProps> = ({options }) => {
 
     return (
         <div>
+            <p style={{ fontWeight: 'bold', alignContent: 'center'}}>{title}</p>
             <label>Min grade: </label>
             <select
                 value={minGrade}
